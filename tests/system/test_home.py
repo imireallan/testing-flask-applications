@@ -1,11 +1,10 @@
 import json
-from unittest import TestCase
-from app import app
+from tests.system.base_test import BaseTest
 
 
-class TestHome(TestCase):
+class TestHome(BaseTest):
     def test_home_route(self):
-        with app.test_client() as client:
+        with self.app() as client:
             resp = client.get("/")
 
             self.assertEqual(resp.status_code, 200)
